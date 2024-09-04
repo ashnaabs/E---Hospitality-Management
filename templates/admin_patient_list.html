@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <style>
+         .background-container {
+            background-color: #F5F5F5; /* Light grey background for the entire page */
+            font-family: Arial, sans-serif;
+            background-image: url("{% static 'assets/medic.png' %}");
+            width: 100%;
+            height: 1000px;
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-position: center;
+            opacity: .75;
+            display:flex;
+        }
+
+        .table {
+
+
+            background-color: #FFFFFF; /* White background for the table */
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Soft shadow around the table */
+            opacity: 1;
+
+
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-position: center;
+
+        }
+
+        .table th {
+            background-color: #007BFF; /* Blue background for table header */
+            color: white; /* White text color for contrast */
+        }
+
+        .table tbody tr:nth-child(odd) {
+            background-color: #E9F7FF; /* Light blue background for odd rows */
+        }
+
+        .table tbody tr:nth-child(even) {
+            background-color: #FFFFFF; /* White background for even rows */
+        }
+
+        .table tbody tr:hover {
+            background-color: #D1ECFF; /* Slightly darker blue on hover */
+        }
+
+        .btn-custom {
+            margin-top: 20px;
+            display: block;
+            text-align: center;
+        }
+    </style>
+
+</head>
+<body>
+<div class="background-container">
+<div class="container" style="width:1000px; margin-top:50px;">
+    <a class="btn btn-primary" href="/admin_index" style="margin:20px;">Home</a>
+
+  <div class="page">
+    <table class="table" style="margin: 0 auto;">
+      <thead>
+        <tr >
+            <th scope="col" style="background-color:blue"><b>Patients booked</b></th>
+          <th scope="col" style="background-color:blue">Doctor</th>
+          <th scope="col" style="background-color:blue">Date</th>
+          <th scope="col" style="background-color: blue">{{ forloop.counter }}</th>
+            <th scope="col" style="background-color:blue">Reschedule option</th>
+        </tr>
+      </thead>
+      <tbody>
+
+        {% for appointment in appointments %}
+        <tr style="background-color: {% cycle '#ffffff' '#f1f1f1' %}; color: #333;">
+            <td style="background-color: blue;"><b>{{ appointment.patient_name }}</b></td>
+            <td style="background-color: blue;"><b>{{ appointment.doctor }}</b></td>
+            <td style="background-color: blue;"><b>{{ appointment.date }}</b></td>
+          <td style="background-color: blue;"><a href="{% url 'admin_user_send' appointment.patient_name %}" class="btn btn-primary"></a></td>
+          <td style="background-color: blue;"><a href="{% url 'admin_user_send' appointment.patient_name %}" class="btn btn-primary">Reschedule</a></td>
+
+        </tr>
+        {% endfor %}
+
+
+
+
+      </tbody>
+    </table>
+
+
+
+  </div>
+
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+
+</div>
+</body>
+
+</html>

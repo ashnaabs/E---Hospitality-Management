@@ -47,5 +47,7 @@ path('admin_index/admin_resource/resource',views.resource,name='resource'),
 path('admin_index/admin_resource/update<int:ad_id>/',views.update_resource,name='update_resource'),
     path('admin_index/admin_payment_list',views.admin_payment_list,name='admin_payment_list'),
 path('resource/',views.patient_resource,name='pat_resource'),
+path('connect_doctor/',views.connect_doctor,name='connect_doctor'),
+path('connect_admin/',views.connect_admin,name='connect_admin'),
 
 ]

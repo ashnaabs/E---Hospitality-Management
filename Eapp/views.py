@@ -479,3 +479,9 @@ def update_resource(request,ad_id):
 def patient_resource(request):
     adm=admin_resource.objects.all()
     return render(request,'patient_health_resource.html',{'adm':adm})
+
+def connect_doctor(request):
+    return render(request,'connect_doctor.html')
+
+def connect_admin(request):
+    return render(request,'connect_admin.html')
